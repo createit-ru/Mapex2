@@ -1,69 +1,86 @@
-.x-grid3-col-actions {
-	padding: 3px 0 3px 5px;
+.ymaps-map label {
+    display: inline;
+}
+.ymaps-map .mapex-balloon {
+    padding: 2px 10px;
+}
+.ymaps-map .mapex-balloon label {
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: normal;
+}
+.ymaps-map .mapex-balloon label:after {
+    content: ":";
+}
+.ymaps-map .mapex-balloon input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+    margin: 0;
+    padding: 3px;
+    width: 95%;
+}
+.ymaps-map .mapex-balloon .form-element {
+    margin: 0 0 7px 0;
+    overflow: hidden;
+}
+.ymaps-map .mapex-balloon .mapex-actions {
+    line-height: 20px;
+    margin: 10px 0 0 0;
+    overflow: hidden;
+}
+.ymaps-map .mapex-balloon .mapex-actions #deleteButton {
+    float: left;
+}
+.ymaps-map .mapex-balloon .mapex-actions #saveButton {
+    background: #fff;
+    float: right;
+    height: 20px;
+    line-height: 12px;
+    width: 90px;
 }
 
-ul.mapex2-row-actions {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+.ymaps-map .mapex-balloon .mapex-colors .mapex-color {
+    border: none;
+    cursor: pointer;
+    float: left;
+    margin: 0;
+    padding: 1px;
+}
+.ymaps-map .mapex-balloon .mapex-colors .mapex-color div {
+    border: 1px solid white;
+    height: 10px;
+    overflow: hidden;
+    text-indent: 9999px;
+    width: 10px;
+}
+.ymaps-map .mapex-balloon .mapex-colors .mapex-color-active {
+    background-color: #444;
 }
 
-ul.mapex2-row-actions li {
-	float: left;
+#mapex-search-form {
+    display: block;
+    margin: 5px 0;
+    overflow: hidden;
 }
-
-ul.mapex2-row-actions .btn {
-	padding: 5px;
-	margin-right: 2px;
-	min-width: 26px;
-	font-size: inherit;
+#mapex-search-form input.mapex-form-text {
+    margin: 5px 10px 5px 0;
+    width: 400px;
+    padding: 4px;
 }
-
-.mapex2-grid-row-disabled {
-	font-style: italic;
-	opacity: .6;
-	color: #555;
+#mapex-search-form input.mapex-form-submit {
+    margin: 0;
+    width: 75px;
+    padding: 4px;
 }
-
-.action-red {
-	color: darkred !important;
+.mapex-terms {
+    text-align: right;
 }
-
-.action-green {
-	color: darkgreen !important;
+.mapex-map-wrapper {position: relative;}
+.mapex-map {width:500px; height:400px;margin: 10px 0;}
+.mapex-marker{
+    position: absolute;width: 7px;height: 7px;bottom: 196px;left: 246px;z-index: 100;
+    background: url(../img/marker.png) 0 0 no-repeat;
 }
-
-.action-blue {
-	color: cadetblue !important;
-}
-
-.action-yellow {
-	color: goldenrod !important;
-}
-
-.action-gray {
-	color: dimgray !important;
-}
-
-a.x-menu-item .x-menu-item-text, a.x-menu-item .x-menu-item-text .icon {
-	cursor: pointer;
-}
-
-a.x-menu-item .x-menu-item-text .icon {
-	line-height: 16px;
-	top: auto;
-}
-
-.x-menu-list .icon {
-	min-width: 1em;
-	text-align: center;
-}
-
-.x-menu-list-item:hover .icon {
-	color: inherit !important;
-}
-
-/*
-ul.mapex2-row-actions .actions-menu {width: 40px;}
-ul.mapex2-row-actions .actions-menu:after {content: " \f107";}
-*/

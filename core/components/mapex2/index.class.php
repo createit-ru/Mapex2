@@ -17,7 +17,7 @@ abstract class mapex2MainController extends modExtraManagerController {
 
 		$this->mapex2 = new mapex2($this->modx);
 		$this->addCss($this->mapex2->config['cssUrl'] . 'mgr/main.css');
-		$this->addJavascript($this->mapex2->config['jsUrl'] . 'mgr/mapex2.js');
+		//$this->addJavascript($this->mapex2->config['jsUrl'] . 'mgr/somefile.js');
 		$this->addHtml('
 		<script type="text/javascript">
 			mapex2.config = ' . $this->modx->toJSON($this->mapex2->config) . ';
