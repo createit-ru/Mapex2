@@ -3,34 +3,38 @@
 $properties = array();
 
 $tmp = array(
-    /*'tpl' => array(
+    'mapTpl' => array(
         'type' => 'textfield',
-        'value' => 'tpl.mapex2.item',
+        'value' => 'mapex.Map',
     ),
-    'sortby' => array(
+    'placemarkTpl' => array(
         'type' => 'textfield',
-        'value' => 'name',
+        'value' => 'mapex.Placemark',
     ),
-    'sortdir' => array(
+    'polygoneTpl' => array(
+        'type' => 'textfield',
+        'value' => 'mapex.Polygone'
+    ),
+    'polylineTpl' => array(
+        'type' => 'textfield',
+        'value' => 'mapex.Polyline',
+    ),
+    'routeTpl' => array(
+        'type' => 'textfield',
+        'value' => 'mapex.Route',
+    ),
+    'controls' => array(
+        'type' => 'textfield',
+        'value' => 'mapTools',
+    ),
+    'includeJs' => array(
         'type' => 'list',
         'options' => array(
-            array('text' => 'ASC', 'value' => 'ASC'),
-            array('text' => 'DESC', 'value' => 'DESC'),
+            array('text' => '1', 'value' => '1'),
+            array('text' => '0', 'value' => '0'),
         ),
-        'value' => 'ASC'
+        'value' => '1'
     ),
-    'limit' => array(
-        'type' => 'numberfield',
-        'value' => 10,
-    ),
-    'outputSeparator' => array(
-        'type' => 'textfield',
-        'value' => "\n",
-    ),
-    'toPlaceholder' => array(
-        'type' => 'combo-boolean',
-        'value' => false,
-    ),*/
 );
 
 foreach ($tmp as $k => $v) {
