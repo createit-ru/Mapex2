@@ -21,8 +21,24 @@ switch ($modx->event->name) {
 
         //$modx->regClientStartupScript($modx->config['assets_url'].'components/mapex2/js/jquery-1.7.1.min.js');
 
-        $modx->regClientStartupScript('https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
+        $jqueryScript = '<script type="text/javascript">';
+        $jqueryScript .= "\n";
+        $jqueryScript .= 'if(typeof jQuery == "undefined"){';
+        $jqueryScript .= "\n";
+        $jqueryScript .= 'document.write(\'<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></\'+\'script>\');';
+        $jqueryScript .= "\n";
+        $jqueryScript .= '}';
+        $jqueryScript .= "\n";
+        $jqueryScript .= '</script>';
+        $jqueryScript .= "\n";
+
+
+        $modx->regClientStartupScript($jqueryScript, true);
+
+
         $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&;lang=ru-RU');
+        //$modx->regClientStartupScript('http://api-maps.yandex.ru/2.1/?lang=ru-RU');
+
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.init.js');
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.storage.js');
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.layouts.js');

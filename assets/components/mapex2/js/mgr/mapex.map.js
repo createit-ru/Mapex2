@@ -15,8 +15,12 @@ Ext.onReady(function(){
                   'type': 'yandex#map',
                   'behaviors': ['scrollZoom', 'dblClickZoom', 'drag']
         		    },
-          'controls': true,'traffic': false,'placemarks': [],
-          'lines': [],'polygons': [],'routes': [],
+          'controls': true,
+          'traffic': false,
+          'placemarks': [],
+          'lines': [],
+          'polygons': [],
+          'routes': [],
           'edit': true
         };
         

@@ -1,8 +1,10 @@
 <?php
 
-$_lang['mapex2_prop_limit'] = 'Ограничение вывода Предметов на странице.';
-$_lang['mapex2_prop_outputSeparator'] = 'Разделитель вывода строк.';
-$_lang['mapex2_prop_sortBy'] = 'Поле сортировки.';
-$_lang['mapex2_prop_sortDir'] = 'Направление сортировки.';
-$_lang['mapex2_prop_tpl'] = 'Чанк оформления каждого ряда Предметов.';
-$_lang['mapex2_prop_toPlaceholder'] = 'Усли указан этот параметр, то результат будет сохранен в плейсхолдер, вместо прямого вывода на странице.';
+$_lang['mapex2_prop_mapTpl'] = 'Чанк для карты';
+$_lang['mapex2_prop_placemarkTpl'] = 'Чанк для точки';
+$_lang['mapex2_prop_polygoneTpl'] = 'Чанк для фигуры';
+$_lang['mapex2_prop_polylineTpl'] = 'Чанк для линии';
+$_lang['mapex2_prop_routeTpl'] = 'Чанк для маршрута';
+$_lang['mapex2_prop_controls'] = 'Набор элементов управления для карт, ';
+$_lang['mapex2_prop_includeJs'] = 'Добавить на страницу подключение JS файла яндекс карт';
+
