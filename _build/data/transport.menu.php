@@ -3,12 +3,12 @@
 $menus = array();
 
 $tmp = array(
-	'mapex2' => array(
-		'description' => 'mapex2_menu_desc',
-		'action' => array(
-			'controller' => 'index',
-		),
-	),
+	//'mapex2' => array(
+	//	'description' => 'mapex2_menu_desc',
+	//	'action' => array(
+	//		'controller' => 'index',
+	//	),
+	//),
 );
 
 $i = 0;

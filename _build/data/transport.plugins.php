@@ -2,15 +2,18 @@
 
 $plugins = array();
 
-$tmp = array(/*
-	'mapex2' => array(
+$tmp = array(
+	'Mapex2' => array(
 		'file' => 'mapex2',
 		'description' => '',
 		'events' => array(
-			'OnManagerPageInit' => array()
+			'OnDocFormRender' => array(),
+            'OnTVInputPropertiesList' => array(),
+            'OnTVInputRenderList' => array(),
+            'OnTVOutputRenderList' => array(),
+            'OnTVOutputRenderPropertiesList' => array(),
 		)
 	)
-	*/
 );
 
 foreach ($tmp as $k => $v) {

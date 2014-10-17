@@ -3,8 +3,8 @@
 $snippets = array();
 
 $tmp = array(
-	'mapex2' => array(
-		'file' => 'mapex2',
+	'mapexMap' => array(
+		'file' => 'mapexMap',
 		'description' => '',
 	),
 );

@@ -6,7 +6,7 @@ if ($object->xpdo) {
 
 	switch ($options[xPDOTransport::PACKAGE_ACTION]) {
 		case xPDOTransport::ACTION_INSTALL:
-			$modelPath = $modx->getOption('mapex2_core_path', null, $modx->getOption('core_path') . 'components/mapex2/') . 'model/';
+			/*$modelPath = $modx->getOption('mapex2_core_path', null, $modx->getOption('core_path') . 'components/mapex2/') . 'model/';
 			$modx->addPackage('mapex2', $modelPath);
 
 			$manager = $modx->getManager();
@@ -15,7 +15,7 @@ if ($object->xpdo) {
 			);
 			foreach ($objects as $tmp) {
 				$manager->createObjectContainer($tmp);
-			}
+			}*/
 			break;
 
 		case xPDOTransport::ACTION_UPGRADE:

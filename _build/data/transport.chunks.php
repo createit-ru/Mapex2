@@ -3,10 +3,26 @@
 $chunks = array();
 
 $tmp = array(
-	'tpl.mapex2.item' => array(
-		'file' => 'item',
+	'mapex.Map' => array(
+		'file' => 'map',
 		'description' => '',
 	),
+    'mapex.Placemark' => array(
+        'file' => 'placemark',
+        'description' => '',
+    ),
+    'mapex.Polygone' => array(
+        'file' => 'polygone',
+        'description' => '',
+    ),
+    'mapex.Polyline' => array(
+        'file' => 'polyline',
+        'description' => '',
+    ),
+    'mapex.Route' => array(
+        'file' => 'route',
+        'description' => '',
+    ),
 );
 
 // Save chunks for setup options

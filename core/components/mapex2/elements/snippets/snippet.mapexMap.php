@@ -1,4 +1,5 @@
 <?php
+
 $map = $modx->getOption('map', $scriptProperties, '');
 $tpl = $modx->getOption('tpl', $scriptProperties, 'mapexMapTpl');
 if($map == '' || $tpl == ''){
