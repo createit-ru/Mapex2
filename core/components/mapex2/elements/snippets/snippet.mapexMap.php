@@ -1,14 +1,16 @@
 <?php
 
 $map = $modx->getOption('map', $scriptProperties, '');
-$tpl = $modx->getOption('tpl', $scriptProperties, 'mapexMapTpl');
-if($map == '' || $tpl == ''){
+if($map == '') {
     return '';
 }
-$placemarkTpl = $modx->getOption('placemarkTpl', $scriptProperties, 'mapexPlacemarkTpl');
-$polylineTpl = $modx->getOption('polylineTpl', $scriptProperties, 'mapexPolylineTpl');
-$polygoneTpl = $modx->getOption('polygoneTpl', $scriptProperties, 'mapexPolygoneTpl');
-$routeTpl = $modx->getOption('routeTpl', $scriptProperties, 'mapexRouteTpl');
+
+/* templates */
+$mapTpl = $modx->getOption('mapTpl', $scriptProperties, 'mapex.Map');
+$placemarkTpl = $modx->getOption('placemarkTpl', $scriptProperties, 'mapex.Placemark');
+$polygoneTpl = $modx->getOption('polygoneTpl', $scriptProperties, 'mapex.Polygone');
+$polylineTpl = $modx->getOption('polylineTpl', $scriptProperties, 'mapex.Polyline');
+$routeTpl = $modx->getOption('routeTpl', $scriptProperties, 'mapex.Route');
 
 // can be: 
 // mapTools,typeSelector,zoomControl or smallZoomControl,scaleLine,miniMap,searchControl,trafficControl
@@ -16,7 +18,6 @@ $controls = $modx->getOption('controls', $scriptProperties, 'mapTools');
 
 //$map = $modx->fromJSON($map);
 $map = json_decode($map);
-//print_r($map);
 
 $mapId = $modx->getOption('mapId', $scriptProperties, 'mapexMap');
 $width = $modx->getOption('mapWidth', $scriptProperties, '500px');
@@ -30,7 +31,7 @@ if($includeJs){
 
 if (!function_exists('mapex_prepare_coords')) {
     function mapex_prepare_coords($coords) {
-        return '['.str_replace(',','.',$coords[0]).','.str_replace(',','.',$coords[1]).']';
+        return '[ '.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).' ]';
     }
 }
 
@@ -70,9 +71,11 @@ $colors = array(
 $polylines = "";
 foreach($map->lines as $ob){
     $coords = array();
+
     foreach($ob->coords as $c){
         $coords[] = mapex_prepare_coords($c);
     }
+
     $polylines .= $modx->getChunk($polylineTpl, array(
         'mapId' => $mapId,
         'coords' => '[ '.implode(', ', $coords).' ]',
@@ -128,8 +131,9 @@ $style = '';
 if($width != '' && $height != ''){
     $style = 'style="width:'.$width.';height:'.$height.';"';
 }
+
 // Map
-return $modx->getChunk($tpl, array(
+return $modx->getChunk($mapTpl, array(
     'style' => $style,
     'mapId' => $mapId,
     'map' => array(

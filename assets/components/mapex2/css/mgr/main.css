@@ -80,7 +80,3 @@
 }
 .mapex-map-wrapper {position: relative;}
 .mapex-map {width:500px; height:400px;margin: 10px 0;}
-.mapex-marker{
-    position: absolute;width: 7px;height: 7px;bottom: 196px;left: 246px;z-index: 100;
-    background: url(../img/marker.png) 0 0 no-repeat;
-}
