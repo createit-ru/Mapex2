@@ -1,8 +1,9 @@
 <?php
 
-$_lang['mapex2_prop_limit'] = 'The number of Items to limit per page.';
-$_lang['mapex2_prop_outputSeparator'] = 'A string to separate each row with.';
-$_lang['mapex2_prop_sortBy'] = 'The field to sort by.';
-$_lang['mapex2_prop_sortDir'] = 'The direction to sort by.';
-$_lang['mapex2_prop_tpl'] = 'The chunk to use for each row of Items.';
-$_lang['mapex2_prop_toPlaceholder'] = 'If set, will output the content to the placeholder specified in this property, rather than outputting the content directly.';
+$_lang['mapex2_prop_mapTpl'] = 'Map tpl';
+$_lang['mapex2_prop_placemarkTpl'] = 'Point tpl';
+$_lang['mapex2_prop_polygoneTpl'] = 'Polygone tpl';
+$_lang['mapex2_prop_polylineTpl'] = 'Polyline tpl';
+$_lang['mapex2_prop_routeTpl'] = 'Route tpl';
+$_lang['mapex2_prop_controls'] = 'Map Controls';
+$_lang['mapex2_prop_includeJs'] = 'Include Yandex Maps API';
