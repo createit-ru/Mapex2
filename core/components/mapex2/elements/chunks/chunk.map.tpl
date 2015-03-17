@@ -1,4 +1,4 @@
-<div id="[[+mapId]]" [[+style]]></div>
+<div id="[[+mapId]]"[[+style]][[+class]]></div>
 <script type="text/javascript">
     ymaps.ready(function(){
         [[+mapId]] = new ymaps.Map("[[+mapId]]", {

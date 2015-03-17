@@ -1,3 +1,8 @@
+/**
+ * Вспомогательные компоненты для работы с API 2.1
+ * При работе с API 2.0 - не используются
+ */
+
 (function (global){
     var ym = { modules: global.ymaps.modules };
 

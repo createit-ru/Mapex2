@@ -1,13 +1,15 @@
+
 .mapex-toolbar-button {
     text-indent: -9999px;
     background: url(../../img/mgr/mapex-icons.png) no-repeat;
     width: 22px;
-    height: 28px;
+    height: 26px;
+    margin-top: 2px;
 }
-.mapex-toolbar-button-placemark {background-position: 0 -19px;}
-.mapex-toolbar-button-line {background-position: 0 3px;}
-.mapex-toolbar-button-polygon {background-position: 0 -63px;}
-.mapex-toolbar-button-route {background-position: 0 -41px;}
+.mapex-toolbar-button-placemark {background-position: 0 -20px;}
+.mapex-toolbar-button-line {background-position: 0 2px;}
+.mapex-toolbar-button-polygon {background-position: 0 -64px;}
+.mapex-toolbar-button-route {background-position: 0 -42px;}
 .mapex-map label {
     display: inline;
 }
@@ -88,6 +90,22 @@
 }
 .mapex-map .mapex-balloon .mapex-colors .mapex-color-active {
     background-color: #444;
+}
+
+.mapex-search-form {
+    display: block;
+    margin: 5px 0;
+    overflow: hidden;
+}
+.mapex-search-form input[type="text"] {
+    margin: 5px 10px 5px 0;
+    width: 400px;
+    padding: 4px;
+}
+.mapex-search-form input[type="submit"] {
+    margin: 0;
+    width: 75px;
+    padding: 4px;
 }
 
 .mapex-terms {

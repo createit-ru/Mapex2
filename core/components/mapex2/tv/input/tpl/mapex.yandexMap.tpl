@@ -1,8 +1,9 @@
 <div class="mapex-map-wrapper">
     <div id="tv{$tv->id}Map" class="mapex-map"></div>
 </div>
-
-<input type="text" id="tv{$tv->id}" name="tv{$tv->id}" value="{$tv->value}" class="textfield"  />
+<div id="tv{$tv->id}MapInput">
+    <input type="text" id="tv{$tv->id}" name="tv{$tv->id}" value="{$tv->value}" class="textfield"  />
+</div>
 
 <script type="text/javascript">
     // <![CDATA[
@@ -42,20 +43,15 @@
             // Create new map
             {/literal}
             var map = new Mapex.MapexMap('tv{$tv->id}Map', 'tv{$tv->id}', '{$tv->value}');
+            map.enableControls();
+            map.enableTools();
+
+            if(!mapex2Config.showInput){
+                $("#tv{$tv->id}" + "MapInput").hide();
+            }
             {literal}
-            // Enable plugins
-            // loading radio group control
-            ymaps.modules.require(['control.RadioGroup']).spread(
-                function (RadioGroup) {
-                    ymaps.MapexRadioGroup = RadioGroup;
-                    map.enableTools();
-                },
-                function (error) {
-                    alert(error);
-                },
-                this
-            );
-            //map.enableTools();
+
+            //map.fitToViewport();
         });
     });
     {/literal}

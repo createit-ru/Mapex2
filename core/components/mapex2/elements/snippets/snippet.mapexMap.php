@@ -1,149 +1,52 @@
 <?php
 
-$map = $modx->getOption('map', $scriptProperties, '');
-if($map == '') {
+/* @var array $scriptProperties */
+/* @var mapex2 $mapex2 */
+$mapex2 = $modx->getService('mapex2', 'mapex2', MODX_CORE_PATH . 'components/mapex2/model/mapex2/');
+
+
+$tvName = $modx->getOption('tvName', $scriptProperties, '');
+if(empty($tvName)) {
+    return '';
+}
+$resource = intval($modx->getOption('resource', $scriptProperties, 0));
+if($resource == $modx->resource->get('id') || $resource = 0) {
+    $resource = $modx->resource;
+}
+else {
+    $resource = $modx->getObject('modResource', $resource);
+}
+if(empty($resource)) {
+    return '';
+}
+
+$map = $resource->getTVValue($tvName);
+if(empty($map)) {
     return '';
 }
 
 /* templates */
-$mapTpl = $modx->getOption('mapTpl', $scriptProperties, 'mapex.Map');
-$placemarkTpl = $modx->getOption('placemarkTpl', $scriptProperties, 'mapex.Placemark');
-$polygoneTpl = $modx->getOption('polygoneTpl', $scriptProperties, 'mapex.Polygone');
-$polylineTpl = $modx->getOption('polylineTpl', $scriptProperties, 'mapex.Polyline');
-$routeTpl = $modx->getOption('routeTpl', $scriptProperties, 'mapex.Route');
+$mapTpl = $modx->getOption('mapTpl', $scriptProperties, 'mapex.Map.Tpl');
+$placemarkTpl = $modx->getOption('placemarkTpl', $scriptProperties, 'mapex.Placemark.Tpl');
+$polygonTpl = $modx->getOption('polygonTpl', $scriptProperties, 'mapex.Polygon.Tpl');
+$polylineTpl = $modx->getOption('polylineTpl', $scriptProperties, 'mapex.Polyline.Tpl');
+$routeTpl = $modx->getOption('routeTpl', $scriptProperties, 'mapex.Route.Tpl');
 
-// can be: 
-// mapTools,typeSelector,zoomControl or smallZoomControl,scaleLine,miniMap,searchControl,trafficControl
-$controls = $modx->getOption('controls', $scriptProperties, 'mapTools');
-
-//$map = $modx->fromJSON($map);
 $map = json_decode($map);
 
+// Map controls, can be: mapTools, typeSelector, zoomControl (or smallZoomControl), scaleLine, miniMap, searchControl, trafficControl
+$controls = $modx->getOption('controls', $scriptProperties, 'mapTools');
+
 $mapId = $modx->getOption('mapId', $scriptProperties, 'mapexMap');
-$width = $modx->getOption('mapWidth', $scriptProperties, '500px');
-$height = $modx->getOption('mapHeight', $scriptProperties, '400px');
+$width = $modx->getOption('width', $scriptProperties, '500px');
+$height = $modx->getOption('height', $scriptProperties, '400px');
 
 $includeJs = $modx->getOption('includeJs', $scriptProperties, 1);
-if($includeJs){
+if(!empty($includeJs)) {
     $lang = $modx->getOption('lang', $scriptProperties, 'ru-RU');
-    $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang='.$lang);
+    $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&lang='.$lang);
 }
 
-if (!function_exists('mapex_prepare_coords')) {
-    function mapex_prepare_coords($coords) {
-        return '[ '.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).' ]';
-    }
-}
+$mapCss = $modx->getOption('containerCssClass', $scriptProperties, '');
 
-// Placemarks
-$placemarks = "";
-foreach($map->placemarks as $ob){
-    $placemarks .= $modx->getChunk($placemarkTpl, array(
-        'mapId' => $mapId,
-        'coords' => mapex_prepare_coords($ob->coords),
-        'properties' => json_encode(array(
-            'iconContent' => $ob->params->iconContent,
-            'balloonContentBody' => $ob->params->balloonContentBody,
-            'balloonContentHeader' => $ob->params->balloonContentHeader,
-        )),
-        'options' => json_encode(array(
-            'preset' => 'twirl#'.$ob->params->color.(empty($ob->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
-        )),
-    ));
-}
-// colors for lines and polygons 
-$colors = array(
-    'blue' => '#006cff',
-    'lightblue' => '#66c7ff',
-    'night' => '#004056',
-    'darkblue' => '#00339a',
-    'green' => '#33cc00',
-    'white' => '#ffffff',
-    'red' => '#ff0000',
-    'orange' => '#ffb400',
-    'darkorange' => '#ff6600',
-    'yellow' => '#ffea00',
-    'violet' => '#b832fd',
-    'pink' => '#fd32fb'
-);
-
-// Lines
-$polylines = "";
-foreach($map->lines as $ob){
-    $coords = array();
-
-    foreach($ob->coords as $c){
-        $coords[] = mapex_prepare_coords($c);
-    }
-
-    $polylines .= $modx->getChunk($polylineTpl, array(
-        'mapId' => $mapId,
-        'coords' => '[ '.implode(', ', $coords).' ]',
-        'properties' => json_encode(array(
-            'balloonContent' => $ob->params->balloonContent,
-        )),
-        'options' => json_encode(array(
-            'strokeWidth' => $ob->params->strokeWidth,
-            'strokeColor' => array_key_exists($ob->params->strokeColor,$colors) ? $colors[$ob->params->strokeColor] : $ob->params->strokeColor,
-            'opacity' => $ob->params->opacity,
-        )),
-    ));
-}
-// Polygons
-$polygons = "";
-foreach($map->polygons as $ob){
-    $coords = array();
-    foreach($ob->coords as $c){
-        $coords2 = array();
-        foreach($c as $c2){
-            $coords2[] = mapex_prepare_coords($c2);
-        }
-        $coords[] = '[ '.implode(', ', $coords2).' ]';
-    }
-
-    $polygons .= $modx->getChunk($polygoneTpl, array(
-        'mapId' => $mapId,
-        'coords' => '[ '.implode(', ', $coords).' ]',
-        'properties' => json_encode(array(
-            'balloonContent' => $ob->params->balloonContent,
-        )),
-        'options' => json_encode(array(
-            'strokeWidth' => $ob->params->strokeWidth,
-            'strokeColor' => array_key_exists($ob->params->strokeColor,$colors) ? $colors[$ob->params->strokeColor] : $ob->params->strokeColor,
-            'fillColor' => $colors[$ob->params->fillColor],
-            'opacity' => $ob->params->opacity,
-        )),
-    ));
-}
-// Routes
-$routes = "";
-if(count($map->routes) > 0){
-    $coords = array();
-    foreach($map->routes as $r){
-        $coords[] = mapex_prepare_coords($r);
-    }
-    $routes .= $modx->getChunk($routeTpl, array(
-        'coords' => '[ '.implode(', ', $coords).' ]',
-    ));
-}
-
-$style = '';
-if($width != '' && $height != ''){
-    $style = 'style="width:'.$width.';height:'.$height.';"';
-}
-
-// Map
-return $modx->getChunk($mapTpl, array(
-    'style' => $style,
-    'mapId' => $mapId,
-    'map' => array(
-        'center' => mapex_prepare_coords($map->coords->center),
-        'zoom' => $map->coords->zoom,
-        'type' => $map->type,
-    ),
-    'controls' => $controls,
-    'placemarks' => $placemarks,
-    'polylines' => $polylines,
-    'polygons' => $polygons,
-    'routes' => $routes,
-));
+return $mapex2->drawMap($map, $controls, $mapId, $mapCss, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height);

@@ -3,25 +3,30 @@
 $settings = array();
 
 $tmp = array(
-	'map_default_center' => array(
+	'manager_map_default_center' => array(
 		'xtype' => 'text',
 		'value' => '55.751565, 37.617935',
-		'area' => 'mapex2_map',
+		'area' => 'mapex2_manager',
 	),
-    'map_default_zoom' => array(
+    'manager_map_default_zoom' => array(
         'xtype' => 'text',
         'value' => '10',
-        'area' => 'mapex2_map',
+        'area' => 'mapex2_manager',
     ),
-    'map_default_type' => array(
+    'manager_map_default_type' => array(
         'xtype' => 'text',
         'value' => 'yandex#map',
-        'area' => 'mapex2_map',
+        'area' => 'mapex2_manager',
     ),
-    'jquery_url' => array(
+    'manager_jquery_url' => array(
         'xtype' => 'text',
         'value' => 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js',
-        'area' => 'mapex2_main',
+        'area' => 'mapex2_manager',
+    ),
+    'manager_show_input' => array(
+        'xtype' => 'combo-boolean',
+        'value' => true,
+        'area' => 'mapex2_manager',
     ),
 );
 

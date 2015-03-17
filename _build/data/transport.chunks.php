@@ -3,23 +3,23 @@
 $chunks = array();
 
 $tmp = array(
-	'mapex.Map' => array(
+	'mapex.Map.Tpl' => array(
 		'file' => 'map',
 		'description' => '',
 	),
-    'mapex.Placemark' => array(
+    'mapex.Placemark.Tpl' => array(
         'file' => 'placemark',
         'description' => '',
     ),
-    'mapex.Polygone' => array(
-        'file' => 'polygone',
+    'mapex.Polygon.Tpl' => array(
+        'file' => 'polygon',
         'description' => '',
     ),
-    'mapex.Polyline' => array(
+    'mapex.Polyline.Tpl' => array(
         'file' => 'polyline',
         'description' => '',
     ),
-    'mapex.Route' => array(
+    'mapex.Route.Tpl' => array(
         'file' => 'route',
         'description' => '',
     ),

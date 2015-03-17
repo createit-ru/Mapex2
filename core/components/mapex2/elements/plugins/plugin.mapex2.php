@@ -15,9 +15,9 @@ switch ($modx->event->name) {
         $modx->event->output($corePath.'tv/properties/');
         break;
     case 'OnDocFormRender':
-        $modx->regClientCSS($assetsUrl.'css/mgr/main.css');
+        $modx->regClientCSS($assetsUrl.'css/mgr/mapex.default.css');
 
-        $jqueryUrl = $modx->getOption('mapex2_jquery_url', null, '');
+        $jqueryUrl = $modx->getOption('mapex2_manager_jquery_url', null, '');
 
         if(!empty($jqueryUrl)) {
             $modx->regClientStartupScript('
@@ -29,24 +29,26 @@ switch ($modx->event->name) {
         ', true);
         }
 
-        $mapCenter = $modx->getOption('mapex2_map_default_center', null, '55.751565, 37.617935');
-        $mapZoom = $modx->getOption('mapex2_map_default_zoom', null, '10');
-        $mapType = $modx->getOption('mapex2_map_default_type', null, 'yandex#map');
+        $mapCenter = $modx->getOption('mapex2_manager_map_default_center', null, '55.751565, 37.617935');
+        $mapZoom = $modx->getOption('mapex2_manager_map_default_zoom', null, '10');
+        $mapType = $modx->getOption('mapex2_manager_map_default_type', null, 'yandex#map');
+        $showInput = $modx->getOption('mapex2_manager_show_input', null, true);
 
         $configScript = '
         <script type="text/javascript">
             mapex2Config = {
                 mapCenter: ['.$mapCenter.'],
                 mapZoom: '.$mapZoom.',
-                mapType: "'.$mapType.'"
+                mapType: "'.$mapType.'",
+                showInput: '.$showInput.'
             }
         </script>
         ';
         $modx->regClientStartupScript($configScript, true);
 
-        $modx->regClientStartupScript('http://api-maps.yandex.ru/2.1/?lang=ru-RU');
+        $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&;lang=ru-RU');
 
-        $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.ym.js');
+        //$modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.ym.js');
 
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.init.js');
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.storage.js');
