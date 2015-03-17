@@ -7,15 +7,19 @@ Ext.onReady(function(){
     // Available colors
     Mapex.colors = {
       blue: '#006cff',
-      lightblue: '#66c7ff',
+      lightBlue: '#66c7ff',
       night: '#004056',
-      darkblue: '#00339a',
+      darkBlue: '#00339a',
       green: '#33cc00',
-      white: '#ffffff',
+      darkGreen: '#1bad03',
+      gray: '#d1d1d1',
+      black: '#000000',
+      brown: '#793e0f',
       red: '#ff0000',
       orange: '#ffb400',
-      darkorange: '#ff6600',
+      darkOrange: '#ff6600',
       yellow: '#ffea00',
+      olive: '#c1c766',
       violet: '#b832fd',
       pink: '#fd32fb'
     };
@@ -81,7 +85,7 @@ Ext.onReady(function(){
 
     // Ballon actions layout
     Mapex.addLayout('mapex#ActionsButtons', ymaps.templateLayoutFactory.createClass(
-      '<div class="mapex-actions"><a id="deleteButton" href="#">Удалить</a><input id="saveButton" type="button" value="Сохранить"/></div>'
+      '<div class="mapex-actions mapex-clearfix"><input class="mapex-action mapex-btn" id="saveButton" type="button" value="Сохранить"/><a id="deleteButton" href="#" class="mapex-action-right mapex-btn-link">Удалить</a></div>'
     ));
   });
 });

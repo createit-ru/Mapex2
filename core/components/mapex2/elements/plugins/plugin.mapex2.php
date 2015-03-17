@@ -14,30 +14,39 @@ switch ($modx->event->name) {
     case 'OnTVOutputRenderPropertiesList':
         $modx->event->output($corePath.'tv/properties/');
         break;
-    case 'OnManagerPageBeforeRender':
-        break;
     case 'OnDocFormRender':
         $modx->regClientCSS($assetsUrl.'css/mgr/main.css');
 
-        //$modx->regClientStartupScript($modx->config['assets_url'].'components/mapex2/js/jquery-1.7.1.min.js');
+        $jqueryUrl = $modx->getOption('mapex2_jquery_url', null, '');
 
-        $jqueryScript = '<script type="text/javascript">';
-        $jqueryScript .= "\n";
-        $jqueryScript .= 'if(typeof jQuery == "undefined"){';
-        $jqueryScript .= "\n";
-        $jqueryScript .= 'document.write(\'<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></\'+\'script>\');';
-        $jqueryScript .= "\n";
-        $jqueryScript .= '}';
-        $jqueryScript .= "\n";
-        $jqueryScript .= '</script>';
-        $jqueryScript .= "\n";
+        if(!empty($jqueryUrl)) {
+            $modx->regClientStartupScript('
+        <script type="text/javascript">
+            if(typeof jQuery == "undefined"){
+                document.write(\'<script type="text/javascript" src="'.$jqueryUrl.'" ></\'+\'script>\');
+            };
+        </script>
+        ', true);
+        }
 
+        $mapCenter = $modx->getOption('mapex2_map_default_center', null, '55.751565, 37.617935');
+        $mapZoom = $modx->getOption('mapex2_map_default_zoom', null, '10');
+        $mapType = $modx->getOption('mapex2_map_default_type', null, 'yandex#map');
 
-        $modx->regClientStartupScript($jqueryScript, true);
+        $configScript = '
+        <script type="text/javascript">
+            mapex2Config = {
+                mapCenter: ['.$mapCenter.'],
+                mapZoom: '.$mapZoom.',
+                mapType: "'.$mapType.'"
+            }
+        </script>
+        ';
+        $modx->regClientStartupScript($configScript, true);
 
+        $modx->regClientStartupScript('http://api-maps.yandex.ru/2.1/?lang=ru-RU');
 
-        $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&;lang=ru-RU');
-        //$modx->regClientStartupScript('http://api-maps.yandex.ru/2.1/?lang=ru-RU');
+        $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.ym.js');
 
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.init.js');
         $modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.storage.js');

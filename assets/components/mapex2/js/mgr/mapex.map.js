@@ -11,10 +11,12 @@ Ext.onReady(function(){
       
       this.options = {
         'init': {
-                  'center': new Array(55.751565, 37.617935),'zoom': 10,
-                  'type': 'yandex#map',
-                  'behaviors': ['scrollZoom', 'dblClickZoom', 'drag']
-        		    },
+            'center': mapex2Config.mapCenter,
+            'zoom': mapex2Config.mapZoom,
+            'type': mapex2Config.mapType,
+            'behaviors': ['scrollZoom', 'dblClickZoom', 'drag'],
+            'controls': ['default']
+          },
           'controls': true,
           'traffic': false,
           'placemarks': [],
@@ -35,7 +37,7 @@ Ext.onReady(function(){
         this.options.routes = this.storage.routes;
       }
       this.map = new ymaps.Map(mapId, this.options.init);
-      
+
       this.mapId = mapId;
       this.tvId = tvId;
       //this.options = options;
@@ -63,45 +65,15 @@ Ext.onReady(function(){
         .add('boundschange', this.exportCoords, this.map)
         .add('typechange', this.exportType, this.map);
 
-      // Right top controls
-      var rightTopControlGroup = [];
-
-      // Enable map controls
-      this.enableControls = function() {
-        rightTopControlGroup.push('typeSelector');
-        var mapSize = this.map.container.getSize();
-        if (mapSize[1] < 270) {
-          this.map.controls.add('smallZoomControl', {right: 5, top: 50});
-        }
-        else {
-          this.map.controls.add('zoomControl', {right: 5, top: 50});
-        }
-        Mapex._mapTools.unshift('default');
-      };
-
-      // Enable traffic control
-      this.enableTraffic = function() {
-        var traffic = new ymaps.control.TrafficControl({
-          providerKey:'traffic#actual',
-          shown:true
-        });
-        traffic.getProvider().state.set('infoLayerShown', true);
-        traffic.state.set('expanded', false)
-        rightTopControlGroup.unshift(traffic);
-      };
-
 
       // Enable plugins
       this.enableTools = function() {
-        var mapTools = Mapex.getMapTools(this);
-        this.map.controls.add(new ymaps.control.MapTools(mapTools), {left: 5, top: 5});
-
-        if (rightTopControlGroup.length > 0) {
-          var groupControl = new ymaps.control.Group({
-            items: rightTopControlGroup
-          });
-          this.map.controls.add(groupControl, {right: 5, top: 5});
-        }
+          var mapTools = Mapex.getMapTools(this);
+          var radioGroup = new ymaps.MapexRadioGroup({ float: "right" });
+          for (var i = 0; i < mapTools.length; i++) {
+              radioGroup.add(mapTools[i]);
+          }
+          this.map.controls.add(radioGroup, { float: "right" });
       };
     };
   });

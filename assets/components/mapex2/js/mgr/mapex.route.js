@@ -81,10 +81,10 @@ Ext.onReady(function(){
       }
 
       // If map in edit mode set map click listener to adding route
-      var mapClick = function(event) {
+      var mapClickRoute = function(event) {
         if (!firstPoint) {
           // First click - create placemark
-          firstPoint = new ymaps.Placemark(event.get('coordPosition'), {}, {
+          firstPoint = new ymaps.Placemark(event.get('coords'), {}, {
             balloonCloseButton: true,
             preset: 'twirl#carIcon'
           });
@@ -94,7 +94,7 @@ Ext.onReady(function(){
           // Second click - remove placemark and add route
           var first = firstPoint.geometry.getCoordinates();
           Map.map.geoObjects.remove(firstPoint);
-          secondPoint = event.get('coordPosition');
+          secondPoint = event.get('coords');
           writeRoute(first, secondPoint, null);
         }
         else {
@@ -104,22 +104,17 @@ Ext.onReady(function(){
       };
 
       // Add new button
-      var routeButton = new ymaps.control.Button({
-        data: {
-          content: '<ymaps class="ymaps-b-form-button__text"><ymaps class="ymaps-b-ico ymaps-b-ico_type_route"></ymaps></ymaps>',
-          title: 'Laying routes'
-        }
-      });
+      var routeButton = new ymaps.control.Button('<div class="mapex-toolbar-button mapex-toolbar-button-route" title="Маршрут"></div>');
 
       // Button actions
       routeButton.events
         .add('select', function(event) {
           Map.cursor = Map.map.cursors.push('pointer');
-          Map.mapListeners.add('click', mapClick);
+          Map.mapListeners.add('click', mapClickRoute);
         })
         .add('deselect', function(event) {
           Map.cursor.remove();
-          Map.mapListeners.remove('click', mapClick);
+          Map.mapListeners.remove('click', mapClickRoute);
         });
 
       return routeButton;

@@ -43,9 +43,19 @@
             {/literal}
             var map = new Mapex.MapexMap('tv{$tv->id}Map', 'tv{$tv->id}', '{$tv->value}');
             {literal}
-            map.enableControls();
             // Enable plugins
-            map.enableTools();
+            // loading radio group control
+            ymaps.modules.require(['control.RadioGroup']).spread(
+                function (RadioGroup) {
+                    ymaps.MapexRadioGroup = RadioGroup;
+                    map.enableTools();
+                },
+                function (error) {
+                    alert(error);
+                },
+                this
+            );
+            //map.enableTools();
         });
     });
     {/literal}

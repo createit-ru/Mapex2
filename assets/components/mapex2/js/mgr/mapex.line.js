@@ -155,28 +155,23 @@ Ext.onReady(function(){
       }
 
       // If map in edit mode set map click listener to adding new line
-      var mapClick = function(event) {
-        var Line = linesCollection.createLine([event.get('coordPosition')], {balloonContent: '', strokeColor: '#006cff', opacity: 0.8, strokeWidth: 3});
+      var mapClickLine = function(event) {
+        var Line = linesCollection.createLine([event.get('coords')], {balloonContent: '', strokeColor: '#006cff', opacity: 0.8, strokeWidth: 3});
         Line.startEditing(true);
       };
 
       // Add new button
-      var lineButton = new ymaps.control.Button({
-        data: {
-          content: '<ymaps class="ymaps-b-form-button__text"><ymaps class="ymaps-b-ico ymaps-b-ico_type_line"></ymaps></ymaps>',
-          title: 'Drawing lines'
-        }
-      });
+      var lineButton = new ymaps.control.Button('<div class="mapex-toolbar-button mapex-toolbar-button-line" title="Линия"></div>');
 
       // Button actions
       lineButton.events
         .add('select', function(event) {
           Map.cursor = Map.map.cursors.push('pointer');
-          Map.mapListeners.add('click', mapClick);
+          Map.mapListeners.add('click', mapClickLine);
         })
         .add('deselect', function(event) {
           Map.cursor.remove();
-          Map.mapListeners.remove('click', mapClick);
+          Map.mapListeners.remove('click', mapClickLine);
         });
 
       return lineButton;

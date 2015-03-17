@@ -178,28 +178,23 @@ Ext.onReady(function(){
       }
 
       // If map in edit mode set map click listener to adding new polygon
-      var mapClick = function(event) {
-        var Polygon = polygonsCollection.createPolygon([[event.get('coordPosition')]], {balloonContent: '', fillColor: 'lightblue', strokeColor: 'blue', opacity: 0.6, strokeWidth: 3});
+      var mapClickPolygon = function(event) {
+        var Polygon = polygonsCollection.createPolygon([[event.get('coords')]], {balloonContent: '', fillColor: 'lightblue', strokeColor: 'blue', opacity: 0.6, strokeWidth: 3});
         Polygon.startEditing(true);
       };
 
       // Add new button
-      var polygonButton = new ymaps.control.Button({
-        data: {
-          content: '<ymaps class="ymaps-b-form-button__text"><ymaps class="ymaps-b-ico ymaps-b-ico_type_poly"></ymaps></ymaps>',
-          title: 'Drawing polygons'
-        }
-      });
+      var polygonButton = new ymaps.control.Button('<div class="mapex-toolbar-button mapex-toolbar-button-polygon" title="Многоугольник"></div>');
 
       // Button actions
       polygonButton.events
         .add('select', function(event) {
           Map.cursor = Map.map.cursors.push('pointer');
-          Map.mapListeners.add('click', mapClick);
+          Map.mapListeners.add('click', mapClickPolygon);
         })
         .add('deselect', function(event) {
           Map.cursor.remove();
-          Map.mapListeners.remove('click', mapClick);
+          Map.mapListeners.remove('click', mapClickPolygon);
         });
 
       return polygonButton;

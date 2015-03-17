@@ -18,7 +18,7 @@ Ext.onReady(function(){
 
       // Set placemark color
       this.setColor = function(color) {
-        var preset = 'twirl#' + color;
+        var preset = 'islands#' + color;
         preset += this.placemark.properties.get('iconContent') ? 'StretchyIcon' : 'DotIcon';
         this.placemark.options.set('preset', preset)
       };
@@ -113,12 +113,6 @@ Ext.onReady(function(){
             break;
           }
         }
-        /*for (var i in this.placemarks) {
-          if (this.placemarks[i] === Placemark) {
-            this.placemarks.splice(i, 1);
-            break;
-          }
-        }*/
       };
 
       // Each placemarks callback
@@ -126,10 +120,6 @@ Ext.onReady(function(){
         for (var i = 0; i < this.placemarks.length; i++) {
           callback(this.placemarks[i]);
         }
-        /*for (var i in this.placemarks) {
-          callback(this.placemarks[i]);
-        }*/
-        
       };
 
       // Export collection
@@ -221,6 +211,7 @@ Ext.onReady(function(){
     // Add placemarks support to map
     Mapex.addMapTools(function(Map) {
       // Default options
+
       var options = {
         balloonMaxWidth: 300,
         balloonCloseButton: true
@@ -249,70 +240,31 @@ Ext.onReady(function(){
         return;
       }
 
-      // If map in edit mode add search form
-      var $searchForm = $([
-        '<form id="mapex-search-form">',
-        '<input type="text" class="mapex-form-text" placeholder="Поиск на карте" value=""/>',
-        '<input type="submit" class="mapex-form-submit" value="Найти"/>',
-        '</form>'].join(''));
-
-      $searchForm.bind('submit', function (e) {
-        var searchQuery = $searchForm.children('input').val();
-        // Find one element
-        ymaps.geocode(searchQuery, {results: 1}, {results: 100}).then(function (res) {
-          var geoObject = res.geoObjects.get(0);
-          if (!geoObject) {
-            alert('Not found');
-            return;
-          }
-          var coordinates = geoObject.geometry.getCoordinates();
-          var params = geoObject.properties.getAll();
-          // Create new placemark
-          /*var Placemark = new $.yaMaps.YamapsPlacemark(coordinates, {
-            iconContent: params.name,
-            balloonHeaderContent: params.name,
-            balloonContentBody: params.description,
-            color: 'white'
-          });
-          placemarksCollection.add(Placemark);
-          Placemark.openBalloon();
-          */
-          // Pan to new placemark
-          Map.map.panTo(coordinates, {
-            checkZoomRange: false,
-            delay: 0,
-            duration: 1000,
-            flying: true
-          });
-        });
-        e.preventDefault();
-      });
-      // Add search form after current map
-      $searchForm.insertBefore('#' + Map.mapId);
-      
       // Map click listener to adding new placemark
-      var mapClick = function(event) {
-        var Placemark = placemarksCollection.createPlacemark(event.get('coordPosition'), {iconContent: '', color: 'blue', balloonContentBody: '', balloonContentHeader: ''});
+      var mapClickPlacemark = function(event) {
+        var Placemark = placemarksCollection.createPlacemark(event.get("coords"), {iconContent: '', color: 'blue', balloonContentBody: '', balloonContentHeader: ''});
         Placemark.openBalloon();
       };
 
       // New button
       var pointButton = new ymaps.control.Button({
-        data: {
-          content: '<ymaps class="ymaps-b-form-button__text"><ymaps class="ymaps-b-ico ymaps-b-ico_type_point"></ymaps></ymaps>',
-          title: 'Setting points'
-        }
+          data: {
+              content: '<div class="mapex-toolbar-button mapex-toolbar-button-placemark" title="Точка"></div>'
+          },
+          options: {
+              selectOnClick: true
+          }
       });
 
       // Button events
       pointButton.events
         .add('select', function(event) {
           Map.cursor = Map.map.cursors.push('pointer');
-          Map.mapListeners.add('click', mapClick);
+          Map.mapListeners.add('click', mapClickPlacemark);
         })
         .add('deselect', function(event) {
           Map.cursor.remove();
-          Map.mapListeners.remove('click', mapClick);
+          Map.mapListeners.remove('click', mapClickPlacemark);
         });
 
       return pointButton;

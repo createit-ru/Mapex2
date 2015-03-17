@@ -54,7 +54,7 @@ Ext.onReady(function(){
         }
         this.element.editor.events.add('statechange', function(e) {
           if (this.element.editor.state.get('editing') && !this.element.editor.state.get('drawing')) {
-            this.openBalloon();
+            //this.openBalloon();
           }
         }, this);
       },
