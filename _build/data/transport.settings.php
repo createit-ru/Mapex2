@@ -4,22 +4,22 @@ $settings = array();
 
 $tmp = array(
 	'manager_map_default_center' => array(
-		'xtype' => 'text',
+		'xtype' => 'textfield',
 		'value' => '55.751565, 37.617935',
 		'area' => 'mapex2_manager',
 	),
     'manager_map_default_zoom' => array(
-        'xtype' => 'text',
+        'xtype' => 'textfield',
         'value' => '10',
         'area' => 'mapex2_manager',
     ),
     'manager_map_default_type' => array(
-        'xtype' => 'text',
+        'xtype' => 'textfield',
         'value' => 'yandex#map',
         'area' => 'mapex2_manager',
     ),
     'manager_jquery_url' => array(
-        'xtype' => 'text',
+        'xtype' => 'textfield',
         'value' => 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js',
         'area' => 'mapex2_manager',
     ),

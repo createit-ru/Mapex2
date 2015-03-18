@@ -1,10 +1,7 @@
 --------------------
 mapex2
 --------------------
-Author: John Doe <john@doe.com>
+Author: Naumov Alexey <info@createit.ru>
 --------------------
 
-A basic Extra for MODx Revolution.
-
-Feel free to suggest ideas/improvements/bugs on GitHub:
-http://github.com/username/mapex2/issues
+A custom TV output render type that allows you to output a TV value into a Yandex Map. Supports points, polylines, polygones, routes.

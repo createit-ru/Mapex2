@@ -1,13 +1,8 @@
 Changelog for mapex2.
 
-1.0.0-beta
-==============
-- Opimized for MODX 2.3
-- Improved processors
-- Disabled plugin and system settings
-- Improved UI
-- Added grid actions
-- Added icons in menu
-- Added search in grid
-- Grid sorting
-- Enable and disable actions
+2.3.0-pl
+
+- серьезный рефакторинг компонента, множество мелких исправлений
+- добавлен сниппет mapexMap21, который работает с API Яндекс.Карт версии 2.1
+- прописаны параметры сниппетов
+- добавлены настройки компонента в соответствующий раздел MODx

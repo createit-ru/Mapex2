@@ -6,7 +6,7 @@ Ext.onReady(function(){
     ymaps.ready(function() {
         // Available colors
         Mapex.colors = {
-            lightBlue: '#66c7ff',
+            lightblue: '#66c7ff',
             blue: '#006cff',
             darkblue: '#00339a',
             night: '#004056',

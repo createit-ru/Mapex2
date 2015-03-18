@@ -33,27 +33,27 @@ $tmp = array(
     ),
     'mapTpl' => array(
         'type' => 'textfield',
-        'value' => 'mapex.Map.Tpl',
+        'value' => 'mapex.Map21.Tpl',
     ),
     'placemarkTpl' => array(
         'type' => 'textfield',
-        'value' => 'mapex.Placemark.Tpl',
+        'value' => 'mapex.Placemark21.Tpl',
     ),
     'polygonTpl' => array(
         'type' => 'textfield',
-        'value' => 'mapex.Polygon.Tpl'
+        'value' => 'mapex.Polygon21.Tpl'
     ),
     'polylineTpl' => array(
         'type' => 'textfield',
-        'value' => 'mapex.Polyline.Tpl',
+        'value' => 'mapex.Polyline21.Tpl',
     ),
     'routeTpl' => array(
         'type' => 'textfield',
-        'value' => 'mapex.Route.Tpl',
+        'value' => 'mapex.Route21.Tpl',
     ),
     'controls' => array(
         'type' => 'textfield',
-        'value' => 'mapTools,typeSelector,zoomControl,searchControl,miniMap,trafficControl,scaleLine',
+        'value' => 'default',
     ),
     'includeJs' => array(
         'type' => 'list',

@@ -7,6 +7,10 @@ $tmp = array(
 		'file' => 'mapexMap',
 		'description' => '',
 	),
+    'mapexMap21' => array(
+        'file' => 'mapexMap21',
+        'description' => '',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

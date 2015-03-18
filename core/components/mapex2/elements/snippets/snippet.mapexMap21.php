@@ -36,8 +36,9 @@ $routeTpl = $modx->getOption('routeTpl', $scriptProperties, 'mapex.Route.Tpl');
 
 $map = json_decode($map);
 
-// Map controls, can be: mapTools, typeSelector, zoomControl (or smallZoomControl), scaleLine, miniMap, searchControl, trafficControl
-$controls = $modx->getOption('controls', $scriptProperties, 'mapTools');
+// Map controls, can be: smallMapDefaultSet, mediumMapDefaultSet (default), largeMapDefaultSet
+// or individual: geolocationControl, searchControl, routeEditor, trafficControl, typeSelector, fullscreenControl, zoomControl, rulerControl
+$controls = $modx->getOption('controls', $scriptProperties, '');
 
 $mapId = $modx->getOption('mapId', $scriptProperties, 'mapexMap');
 $width = $modx->getOption('width', $scriptProperties, '500px');
@@ -46,7 +47,7 @@ $height = $modx->getOption('height', $scriptProperties, '400px');
 $includeJs = $modx->getOption('includeJs', $scriptProperties, 1);
 if(!empty($includeJs)) {
     $lang = $modx->getOption('lang', $scriptProperties, 'ru-RU');
-    $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&lang='.$lang);
+    $modx->regClientStartupScript('http://api-maps.yandex.ru/2.1/?lang='.$lang);
 }
 
 $mapCss = $modx->getOption('containerCssClass', $scriptProperties, '');

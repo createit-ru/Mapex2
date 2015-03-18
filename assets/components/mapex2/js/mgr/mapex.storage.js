@@ -46,7 +46,7 @@ Ext.onReady(function(){
                     "placemarks": this.placemarks,
                     "polygons": this.polygons,
                     "lines": this.lines,
-                    "routes": this.routes,
+                    "routes": this.routes
                 };
                 document.getElementById(tvId).value = Ext.encode(v);
                 MODx.fireResourceFormChange();

@@ -23,6 +23,27 @@ $tmp = array(
         'file' => 'route',
         'description' => '',
     ),
+
+    'mapex.Map21.Tpl' => array(
+        'file' => 'map21',
+        'description' => '',
+    ),
+    'mapex.Placemark21.Tpl' => array(
+        'file' => 'placemark21',
+        'description' => '',
+    ),
+    'mapex.Polygon21.Tpl' => array(
+        'file' => 'polygon21',
+        'description' => '',
+    ),
+    'mapex.Polyline21.Tpl' => array(
+        'file' => 'polyline21',
+        'description' => '',
+    ),
+    'mapex.Route21.Tpl' => array(
+        'file' => 'route21',
+        'description' => '',
+    ),
 );
 
 // Save chunks for setup options

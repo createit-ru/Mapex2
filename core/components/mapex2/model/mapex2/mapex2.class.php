@@ -74,15 +74,25 @@ class mapex2 {
      * @param string $routeTpl
      * @param string $width
      * @param string $height
-     * @return
+     * @return string
      */
     function drawMap($map, $mapControls, $mapId, $mapCss, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height){
+
+        $controls21 =  trim($mapControls);
+        if(!empty($controls21)){
+            $controls21 = array_map("trim", explode(",", $mapControls));
+            $controls21 = "['".implode("', '", $controls21)."']";
+        }
+        else {
+            $controls21 = '[]';
+        }
 
         $output = array(
             'mapId' => $mapId,
             'style' => $this->getMapCssStyle($width, $height),
             'class' => $mapCss,
             'controls' => $mapControls,
+            'controls21' =>  $controls21,
         );
 
         $output['placemarks'] = $this->DrawMapPlacemarks($mapId, $map->placemarks, $placemarkTpl);
@@ -112,6 +122,9 @@ class mapex2 {
                 )),
                 'options' => json_encode(array(
                     'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
+                )),
+                'options21' => json_encode(array(
+                    'preset' => 'islands#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
                 )),
             ));
         }
@@ -203,6 +216,6 @@ class mapex2 {
     }
 
     private  function prepareCoords($coords) {
-        return '[ '.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).' ]';
+        return '['.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).']';
     }
 }

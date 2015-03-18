@@ -1,5 +1,6 @@
 <?php
 
+$_lang['mapex2_prop_map'] = 'json строка с картой';
 $_lang['mapex2_prop_tvName'] = 'Имя TV параметра с картой';
 $_lang['mapex2_prop_resource'] = 'Страница с картой';
 $_lang['mapex2_prop_mapId'] = 'Id карты';

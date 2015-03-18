@@ -3,13 +3,10 @@
     ymaps.ready(function(){
         [[+mapId]] = new ymaps.Map("[[+mapId]]", {
             center: [[+map.center]],
-            zoom: [[+map.zoom]]
+            zoom: [[+map.zoom]],
+            controls: [[+controls21]]
         });
         [[+mapId]].setType("[[+map.type]]");
-        var [[+mapId]]Controls = "[[+controls]]".split(',');
-        for(var i = 0; i < [[+mapId]]Controls.length; i++){
-            [[+mapId]].controls.add([[+mapId]]Controls[i]);
-        }
 [[+placemarks]]
 [[+polylines]]
 [[+polygons]]
