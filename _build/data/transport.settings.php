@@ -28,6 +28,11 @@ $tmp = array(
         'value' => true,
         'area' => 'mapex2_manager',
     ),
+    'manager_add_placemark_on_search' => array(
+        'xtype' => 'combo-boolean',
+        'value' => false,
+        'area' => 'mapex2_manager',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

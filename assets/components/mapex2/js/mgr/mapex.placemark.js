@@ -264,6 +264,12 @@ Ext.onReady(function(){
                         duration: 1000,
                         flying: true
                     });
+
+                    if(mapex2Config.addPlacemarkOnSearch) {
+                        var newPlacemark = placemarksCollection.createPlacemark(coordinates, {iconContent: searchQuery, color: 'blue', balloonContentBody: '', balloonContentHeader: ''});
+                        newPlacemark.openBalloon();
+                    }
+
                 });
                 e.preventDefault();
             });

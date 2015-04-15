@@ -2,9 +2,7 @@ Ext.onReady(function(){
     ymaps.ready(function() {
         // Basic map class
         Mapex.MapexStorage = function(tvId) {
-            //this.mapId = mapId;
             this.tvId = tvId;
-            // default: Moskow
             this.coords = {"center":[55.751565,37.617935],"zoom":10};
             this.type = 'yandex#map';
             this.placemarks = [];

@@ -32,7 +32,8 @@ switch ($modx->event->name) {
         $mapCenter = $modx->getOption('mapex2_manager_map_default_center', null, '55.751565, 37.617935');
         $mapZoom = $modx->getOption('mapex2_manager_map_default_zoom', null, '10');
         $mapType = $modx->getOption('mapex2_manager_map_default_type', null, 'yandex#map');
-        $showInput = $modx->getOption('mapex2_manager_show_input', null, true);
+        $showInput = intval($modx->getOption('mapex2_manager_show_input', null, true));
+        $addPlacemarkOnSearch = intval($modx->getOption('mapex2_manager_add_placemark_on_search', null, false));
 
         $configScript = '
         <script type="text/javascript">
@@ -40,7 +41,8 @@ switch ($modx->event->name) {
                 mapCenter: ['.$mapCenter.'],
                 mapZoom: '.$mapZoom.',
                 mapType: "'.$mapType.'",
-                showInput: '.$showInput.'
+                showInput: '.$showInput.',
+                addPlacemarkOnSearch: '.$addPlacemarkOnSearch.'
             }
         </script>
         ';

@@ -136,6 +136,18 @@ Ext.onReady(function(){
                     collection.exportToHTML();
                 }
             },
+            /*
+            escapeHtml: function(text) {
+                var map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                alert(text);
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            },*/
             // Init object
             _init: function(element) {
                 this.element = element;

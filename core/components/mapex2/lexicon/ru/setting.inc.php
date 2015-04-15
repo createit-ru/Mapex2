@@ -16,3 +16,6 @@ $_lang['setting_mapex2_manager_map_default_type_desc'] = 'Допустимые �
 
 $_lang['setting_mapex2_manager_show_input'] = 'Показывать input с json кодированной картой в админке';
 $_lang['setting_mapex2_manager_show_input_desc'] = '';
+
+$_lang['setting_mapex2_manager_add_placemark_on_search'] = 'Добавлять точку после поиска';
+$_lang['setting_mapex2_manager_add_placemark_on_search_desc'] = 'Автоматически добавлять точку на карту после осуществления поиска';
