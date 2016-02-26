@@ -12,7 +12,7 @@ if(empty($map)) {
         return '';
     }
     $resource = intval($modx->getOption('resource', $scriptProperties, 0));
-    if($resource == $modx->resource->get('id') || $resource = 0) {
+    if($resource == $modx->resource->get('id') || $resource == 0) {
         $resource = $modx->resource;
     }
     else {

@@ -2,7 +2,7 @@
     <div id="tv{$tv->id}Map" class="mapex-map"></div>
 </div>
 <div id="tv{$tv->id}MapInput">
-    <input type="text" id="tv{$tv->id}" name="tv{$tv->id}" value="" class="textfield"  />
+    <textarea id="tv{$tv->id}" name="tv{$tv->id}" class="textfield" rows="5"></textarea>
 </div>
 
 <script type="text/javascript">

@@ -66,7 +66,7 @@ class mapex2 {
      * @param object $map
      * @param string $mapControls
      * @param string $mapId
-     * @param string $mapCss
+     * @param string $mapCssClass
      * @param string $mapTpl
      * @param string $placemarkTpl
      * @param string $polygonTpl
@@ -76,7 +76,7 @@ class mapex2 {
      * @param string $height
      * @return string
      */
-    function drawMap($map, $mapControls, $mapId, $mapCss, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height){
+    function drawMap($map, $mapControls, $mapId, $mapCssClass, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height){
 
         $controls21 =  trim($mapControls);
         if(!empty($controls21)){
@@ -90,7 +90,7 @@ class mapex2 {
         $output = array(
             'mapId' => $mapId,
             'style' => $this->getMapCssStyle($width, $height),
-            'class' => $mapCss,
+            'class' => !empty($mapCssClass) ? ' class="'.$mapCssClass.'"' : '',
             'controls' => $mapControls,
             'controls21' =>  $controls21,
         );
