@@ -17,7 +17,7 @@ elseif (file_exists(dirname(dirname(dirname(__FILE__))) . '/core')) {
 	define('MODX_BASE_PATH', dirname(dirname(dirname(__FILE__))) . '/');
 }
 else {
-	define('MODX_BASE_PATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
+	define('MODX_BASE_PATH', dirname(dirname(__FILE__)) . '/');
 }
 define('MODX_CORE_PATH', MODX_BASE_PATH . 'core/');
 define('MODX_MANAGER_PATH', MODX_BASE_PATH . 'manager/');

@@ -1,10 +1,10 @@
 <?php
-
 /* @var array $scriptProperties */
 /* @var mapex2 $mapex2 */
 $mapex2 = $modx->getService('mapex2', 'mapex2', MODX_CORE_PATH . 'components/mapex2/model/mapex2/');
 
 $map = $modx->getOption('map', $scriptProperties, '');
+$placemarkIcon = $modx->getOption('placemarkIcon', $scriptProperties, '');
 
 if(empty($map)) {
     $tvName = $modx->getOption('tvName', $scriptProperties, '');
@@ -51,4 +51,4 @@ if(!empty($includeJs)) {
 
 $mapCss = $modx->getOption('containerCssClass', $scriptProperties, '');
 
-return $mapex2->drawMap($map, $controls, $mapId, $mapCss, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height);
+return $mapex2->drawMap($map, $controls, $mapId, $mapCss, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height, $placemarkIcon);
