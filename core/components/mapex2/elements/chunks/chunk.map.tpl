@@ -14,7 +14,5 @@
         [[+polylines]]
         [[+polygons]]
         [[+routes]]
-
-        [[+mapId]].setBounds([[+mapId]].geoObjects.getBounds());
     });
 </script>

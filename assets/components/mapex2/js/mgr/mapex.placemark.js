@@ -265,6 +265,9 @@ Ext.onReady(function(){
                         flying: true
                     });
 
+                    var Placemark = placemarksCollection.createPlacemark(coordinates, {});
+                    Placemark.setContent('', '');
+
                     if(mapex2Config.addPlacemarkOnSearch) {
                         var newPlacemark = placemarksCollection.createPlacemark(coordinates, {iconContent: searchQuery, color: 'blue', balloonContentBody: '', balloonContentHeader: ''});
                         newPlacemark.openBalloon();
