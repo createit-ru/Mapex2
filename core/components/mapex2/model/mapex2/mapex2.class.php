@@ -116,7 +116,10 @@ class mapex2 {
             $options = array(
                 'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
             );
-            if ($this->placemarkIcon) {
+
+            if (isset($placemark->params->iconImageHref)) {
+                $options = array_merge($options, array('iconImageHref' => $placemark->params->iconImageHref));
+            } elseif ($this->placemarkIcon) {
                 $options = array_merge($options, array('iconImageHref' => $this->placemarkIcon));
             }
 
@@ -128,7 +131,7 @@ class mapex2 {
                     'balloonContentBody' => $placemark->params->balloonContentBody,
                     'balloonContentHeader' => $placemark->params->balloonContentHeader,
                 )),
-                'options' => json_encode($options),
+                'options' => json_encode($options, JSON_UNESCAPED_SLASHES),
                 'options21' => json_encode(array(
                     'preset' => 'islands#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
                 )),

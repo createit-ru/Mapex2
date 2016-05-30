@@ -5,7 +5,7 @@ define('PKG_NAME', 'mapex2');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 
 define('PKG_VERSION', '2.3.0');
-define('PKG_RELEASE', 'pl4-fork');
+define('PKG_RELEASE', 'pl5-fork');
 define('PKG_AUTO_INSTALL', true);
 define('PKG_NAMESPACE_PATH', '{core_path}components/' . PKG_NAME_LOWER . '/');
 

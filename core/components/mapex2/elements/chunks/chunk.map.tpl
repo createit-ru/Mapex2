@@ -7,12 +7,14 @@
         });
         [[+mapId]].setType("[[+map.type]]");
         var [[+mapId]]Controls = "[[+controls]]".split(',');
-        for(var i = 0; i < [[+mapId]]Controls.length; i++){
+        for (var i = 0; i < [[+mapId]]Controls.length; i++){
             [[+mapId]].controls.add([[+mapId]]Controls[i]);
         }
-[[+placemarks]]
-[[+polylines]]
-[[+polygons]]
-[[+routes]]
+        [[+placemarks]]
+        [[+polylines]]
+        [[+polygons]]
+        [[+routes]]
+
+        [[+mapId]].setBounds([[+mapId]].geoObjects.getBounds());
     });
 </script>
