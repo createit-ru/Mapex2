@@ -117,7 +117,7 @@ class mapex2 {
                 'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
             );
 
-            if (isset($placemark->params->iconImageHref)) {
+            if (isset($placemark->params->iconImageHref) && $placemark->params->iconImageHref) {
                 $options = array_merge($options, array('iconImageHref' => $placemark->params->iconImageHref));
             } elseif ($this->placemarkIcon) {
                 $options = array_merge($options, array('iconImageHref' => $this->placemarkIcon));
