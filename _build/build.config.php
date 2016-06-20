@@ -5,7 +5,7 @@ define('PKG_NAME', 'mapex2');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 
 define('PKG_VERSION', '2.3.0');
-define('PKG_RELEASE', 'pl3');
+define('PKG_RELEASE', 'pl7-fork');
 define('PKG_AUTO_INSTALL', true);
 define('PKG_NAMESPACE_PATH', '{core_path}components/' . PKG_NAME_LOWER . '/');
 
@@ -17,7 +17,7 @@ elseif (file_exists(dirname(dirname(dirname(__FILE__))) . '/core')) {
 	define('MODX_BASE_PATH', dirname(dirname(dirname(__FILE__))) . '/');
 }
 else {
-	define('MODX_BASE_PATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
+	define('MODX_BASE_PATH', dirname(dirname(__FILE__)) . '/');
 }
 define('MODX_CORE_PATH', MODX_BASE_PATH . 'core/');
 define('MODX_MANAGER_PATH', MODX_BASE_PATH . 'manager/');

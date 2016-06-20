@@ -76,7 +76,8 @@ class mapex2 {
      * @param string $height
      * @return string
      */
-    function drawMap($map, $mapControls, $mapId, $mapCssClass, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height){
+    function drawMap($map, $mapControls, $mapId, $mapCssClass, $mapTpl, $placemarkTpl, $polygonTpl, $polylineTpl, $routeTpl, $width, $height, $placemarkIcon = false){
+        $this->placemarkIcon = $placemarkIcon;
 
         $controls21 =  trim($mapControls);
         if(!empty($controls21)){
@@ -112,6 +113,16 @@ class mapex2 {
     private function DrawMapPlacemarks($mapId, $placemarks, $placemarkTpl, $outputSeparator = "\n"){
         $output = array();
         foreach($placemarks as $placemark){
+            $options = array(
+                'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
+            );
+
+            if (isset($placemark->params->iconImageHref) && $placemark->params->iconImageHref) {
+                $options = array_merge($options, array('iconImageHref' => $placemark->params->iconImageHref));
+            } elseif ($this->placemarkIcon) {
+                $options = array_merge($options, array('iconImageHref' => $this->placemarkIcon));
+            }
+
             $output[] = $this->modx->getChunk($placemarkTpl, array(
                 'mapId' => $mapId,
                 'coords' => $this->prepareCoords($placemark->coords),
@@ -120,9 +131,7 @@ class mapex2 {
                     'balloonContentBody' => $placemark->params->balloonContentBody,
                     'balloonContentHeader' => $placemark->params->balloonContentHeader,
                 )),
-                'options' => json_encode(array(
-                    'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
-                )),
+                'options' => json_encode($options, JSON_UNESCAPED_SLASHES),
                 'options21' => json_encode(array(
                     'preset' => 'islands#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
                 )),
