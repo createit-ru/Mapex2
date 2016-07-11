@@ -47,7 +47,7 @@
             map.enableTools();
 
             if(!mapex2Config.showInput){
-                $("#tv{$tv->id}" + "MapInput").hide();
+                jQuery("#tv{$tv->id}" + "MapInput").hide();
             }
             {literal}
 

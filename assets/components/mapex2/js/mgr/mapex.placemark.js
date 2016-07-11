@@ -159,13 +159,13 @@ Ext.onReady(function(){
                         this.properties = this.getData().properties.getAll();
                         // Balloon HTML element
 
-                        var $element = $(this.getParentElement());
+                        var $element = jQuery(this.getParentElement());
                         var _this = this;
 
                         // Placemark colorpicker
-                        this.$placemarkColors = $(this.getParentElement()).find('.placemark-colors .mapex-color');
+                        this.$placemarkColors = jQuery(this.getParentElement()).find('.placemark-colors .mapex-color');
                         this.$placemarkColors.each(function() {
-                            var $this = $(this);
+                            var $this = jQuery(this);
                             var $div = $this.children('div');
                             if (_this.properties.color == $div.attr('data-content')) {
                                 $this.addClass('mapex-color-active');
@@ -178,18 +178,18 @@ Ext.onReady(function(){
                         this.$balloonContent = $element.find('#balloonContent');
 
                         // Actions
-                        $('#deleteButton').bind('click', this, this.onDeleteClick);
-                        $('#saveButton').bind('click', this, this.onSaveClick);
+                        jQuery('#deleteButton').bind('click', this, this.onDeleteClick);
+                        jQuery('#saveButton').bind('click', this, this.onSaveClick);
                     },
                     clear: function () {
                         this.constructor.superclass.build.call(this);
                         this.$placemarkColors.unbind('click', this, this.colorClick);
-                        $('#deleteButton').unbind('click', this, this.onDeleteClick);
-                        $('#saveButton').unbind('click', this, this.onSaveClick);
+                        jQuery('#deleteButton').unbind('click', this, this.onDeleteClick);
+                        jQuery('#saveButton').unbind('click', this, this.onSaveClick);
                     },
                     colorClick: function(e) {
                         // Colorpicker click
-                        e.data.properties.color = $(this).children('div').attr('data-content');
+                        e.data.properties.color = jQuery(this).children('div').attr('data-content');
                     },
                     onDeleteClick: function (e) {
                         // Delete click
@@ -241,7 +241,7 @@ Ext.onReady(function(){
             }
 
             // If map in edit mode add search form
-            var $searchForm = $([
+            var $searchForm = jQuery([
                 '<form class="mapex-search-form">',
                 '<input type="text" placeholder="Поиск на карте" value=""/>',
                 '<input type="submit" value="Найти"/>',

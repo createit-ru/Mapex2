@@ -53,13 +53,13 @@ Ext.onReady(function(){
                         this.constructor.superclass.build.call(this);
                         this.properties = this.getData().properties.getAll();
                         // Balloon HTML element
-                        var $element = $(this.getParentElement());
+                        var $element = jQuery(this.getParentElement());
                         var _this = this;
 
                         // Polygon background colorpicker
                         this.$polyColors = $element.find('.poly-colors .mapex-color');
                         this.$polyColors.each(function() {
-                            var $this = $(this);
+                            var $this = jQuery(this);
                             var $div = $this.children('div');
                             if (_this.properties.fillColor == $div.attr('data-content')) {
                                 $this.addClass('mapex-color-active');
@@ -70,7 +70,7 @@ Ext.onReady(function(){
                         // Polygon line colorpicker
                         this.$lineColors = $element.find('.line-colors .mapex-color');
                         this.$lineColors.each(function() {
-                            var $this = $(this);
+                            var $this = jQuery(this);
                             var $div = $this.children('div');
                             if (_this.properties.strokeColor == $div.attr('data-content')) {
                                 $this.addClass('mapex-color-active');
@@ -90,23 +90,23 @@ Ext.onReady(function(){
                         this.$balloonContent = $element.find('#balloonContent');
 
                         // Actions
-                        $('#deleteButton').bind('click', this, this.onDeleteClick);
-                        $('#saveButton').bind('click', this, this.onSaveClick);
+                        jQuery('#deleteButton').bind('click', this, this.onDeleteClick);
+                        jQuery('#saveButton').bind('click', this, this.onSaveClick);
                     },
                     clear: function () {
                         this.constructor.superclass.build.call(this);
                         this.$polyColors.unbind('click', this, this.fillColorClick)
                         this.$lineColors.unbind('click', this, this.strokeColorClick);
-                        $('#deleteButton').unbind('click', this, this.onDeleteClick);
-                        $('#saveButton').unbind('click', this, this.onSaveClick);
+                        jQuery('#deleteButton').unbind('click', this, this.onDeleteClick);
+                        jQuery('#saveButton').unbind('click', this, this.onSaveClick);
                     },
                     fillColorClick: function(e) {
                         // Fill colorpicker click
-                        e.data.properties.fillColor = $(this).children('div').attr('data-content');
+                        e.data.properties.fillColor = jQuery(this).children('div').attr('data-content');
                     },
                     strokeColorClick: function(e) {
                         // Stroke colorpicker click
-                        e.data.properties.strokeColor = $(this).children('div').attr('data-content');
+                        e.data.properties.strokeColor = jQuery(this).children('div').attr('data-content');
                     },
                     onDeleteClick: function (e) {
                         // Delete click

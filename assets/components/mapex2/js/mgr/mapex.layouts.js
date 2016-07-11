@@ -65,9 +65,9 @@ Ext.onReady(function(){
                 build: function () {
                     this.constructor.superclass.build.call(this);
                     // TODO XXX
-                    this.$elements = $(this.getParentElement()).find('.mapex-color');
+                    this.$elements = jQuery(this.getParentElement()).find('.mapex-color');
                     this.$elements.each(function() {
-                        var $div = $(this).children('div');
+                        var $div = jQuery(this).children('div');
                         $div.css('background-color', $div.text());
                     });
                     this.$elements.bind('click', this, this.colorClick)
@@ -78,7 +78,7 @@ Ext.onReady(function(){
                 },
                 colorClick: function(e) {
                     e.data.$elements.removeClass('mapex-color-active');
-                    $(this).addClass('mapex-color-active');
+                    jQuery(this).addClass('mapex-color-active');
                 }
             }
         ));
