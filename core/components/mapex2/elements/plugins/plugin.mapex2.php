@@ -48,7 +48,7 @@ switch ($modx->event->name) {
         ';
         $modx->regClientStartupScript($configScript, true);
 
-        $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&;lang=ru-RU');
+        $modx->regClientStartupScript('https://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU');
 
         //$modx->regClientStartupScript($assetsUrl.'js/mgr/mapex.ym.js');
 

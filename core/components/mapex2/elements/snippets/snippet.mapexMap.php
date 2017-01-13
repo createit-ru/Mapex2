@@ -46,7 +46,7 @@ $height = $modx->getOption('height', $scriptProperties, '400px');
 $includeJs = $modx->getOption('includeJs', $scriptProperties, 1);
 if(!empty($includeJs)) {
     $lang = $modx->getOption('lang', $scriptProperties, 'ru-RU');
-    $modx->regClientStartupScript('http://api-maps.yandex.ru/2.0/?load=package.full&lang='.$lang);
+    $modx->regClientStartupScript('https://api-maps.yandex.ru/2.0/?load=package.full&lang='.$lang);
 }
 
 $mapCss = $modx->getOption('containerCssClass', $scriptProperties, '');
