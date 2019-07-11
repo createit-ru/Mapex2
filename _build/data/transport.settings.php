@@ -3,6 +3,11 @@
 $settings = array();
 
 $tmp = array(
+    'yandex_api_key' => array(
+        'xtype' => 'textfield',
+        'value' => '',
+        'area' => 'mapex2_common',
+    ),
 	'manager_map_default_center' => array(
 		'xtype' => 'textfield',
 		'value' => '55.751565, 37.617935',

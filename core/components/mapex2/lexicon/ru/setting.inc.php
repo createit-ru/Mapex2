@@ -1,6 +1,10 @@
 <?php
 
+$_lang['area_mapex2_common'] = 'Общие настройки';
 $_lang['area_mapex2_manager'] = 'Административный интерфейс';
+
+$_lang['setting_mapex2_yandex_api_key'] = 'API-ключ для подключения Яндекс.Карт';
+$_lang['setting_mapex2_yandex_api_key_desc'] = 'Получить можно в кабинете разработчика <a href="https://developer.tech.yandex.ru/">https://developer.tech.yandex.ru/</a>. Используется только для API версии 2.1.';
 
 $_lang['setting_mapex2_manager_jquery_url'] = 'Url адрес к библиотеке jquery (необходима для работы)';
 $_lang['setting_mapex2_manager_jquery_url_desc'] = 'Можно оставить пустым, если у вас в административной части уже подключается jquery';

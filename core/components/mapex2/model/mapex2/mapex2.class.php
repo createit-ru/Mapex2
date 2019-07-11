@@ -63,6 +63,24 @@ class mapex2 {
 	}
 
     /**
+     * @param string $version Версия API, поддерживается 2.0 (по-умолчанию) и 2.1
+     * @param string $lang Локаль, в виде ru_RU
+     * @return string Url адрес для подключения API
+     */
+    function getYandexMapsApiUrl($version = '2.0', $lang = 'ru_RU') {
+        $url = "https://api-maps.yandex.ru/2.0/?load=package.full&lang=".$lang;
+        if($version == '2.1') {
+            $url = "https://api-maps.yandex.ru/2.1/?lang=".$lang;
+        }
+
+        $apiKey = $this->modx->getOption('mapex2_yandex_api_key', null, '');
+        if(!empty($apiKey)) {
+            $url = $url.'&apikey='.$apiKey;
+        }
+
+        return $url;
+    }
+    /**
      * @param object $map
      * @param string $mapControls
      * @param string $mapId
