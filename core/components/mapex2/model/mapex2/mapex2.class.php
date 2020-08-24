@@ -99,10 +99,10 @@ class mapex2 {
         $controls21 =  trim($mapControls);
         if(!empty($controls21)){
             $controls21 = array_map("trim", explode(",", $mapControls));
-            $controls21 = "['".implode("', '", $controls21)."']";
+            $controls21 = "[ '".implode("', '", $controls21)."' ]";
         }
         else {
-            $controls21 = '[]';
+            $controls21 = '[ ]';
         }
 
         $output = array(
@@ -137,13 +137,13 @@ class mapex2 {
                     'iconContent' => $placemark->params->iconContent,
                     'balloonContentBody' => $placemark->params->balloonContentBody,
                     'balloonContentHeader' => $placemark->params->balloonContentHeader,
-                )),
+                ), JSON_PRETTY_PRINT),
                 'options' => json_encode(array(
                     'preset' => 'twirl#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
-                )),
+                ), JSON_PRETTY_PRINT),
                 'options21' => json_encode(array(
                     'preset' => 'islands#'.$placemark->params->color.(empty($placemark->params->iconContent) ? 'DotIcon' : 'StretchyIcon'),
-                )),
+                ), JSON_PRETTY_PRINT),
             ));
         }
         return implode($outputSeparator, $output);
@@ -163,12 +163,12 @@ class mapex2 {
                 'coords' => '[ '.implode(', ', $coords).' ]',
                 'properties' => json_encode(array(
                     'balloonContent' => $line->params->balloonContent,
-                )),
+                ), JSON_PRETTY_PRINT),
                 'options' => json_encode(array(
                     'strokeWidth' => $line->params->strokeWidth,
                     'strokeColor' => $this->getColor($line->params->strokeColor),
                     'opacity' => $line->params->opacity,
-                )),
+                ), JSON_PRETTY_PRINT),
             ));
         }
         return implode($outputSeparator, $output);
@@ -191,13 +191,13 @@ class mapex2 {
                 'coords' => '[ '.implode(', ', $coords).' ]',
                 'properties' => json_encode(array(
                     'balloonContent' => $polygon->params->balloonContent,
-                )),
+                ), JSON_PRETTY_PRINT),
                 'options' => json_encode(array(
                     'strokeWidth' => $polygon->params->strokeWidth,
                     'strokeColor' => $this->getColor($polygon->params->strokeColor),
                     'fillColor' => $this->getColor($polygon->params->fillColor),
                     'opacity' => $polygon->params->opacity,
-                )),
+                ), JSON_PRETTY_PRINT),
             ));
         }
         return implode($outputSeparator, $output);
@@ -234,6 +234,6 @@ class mapex2 {
     }
 
     private  function prepareCoords($coords) {
-        return '['.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).']';
+        return '[ '.str_replace(',','.',$coords[0]).', '.str_replace(',','.',$coords[1]).' ]';
     }
 }
